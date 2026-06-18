@@ -8,7 +8,13 @@ terraform {
 }
 
 # Настройка провайдера (использует переменные окружения из RC-файла)
-provider "vkcs" {}
+provider "vkcs" {
+  username   = var.vkcs_username
+  password   = var.vkcs_password
+  project_id = var.vkcs_project_id
+  region     = var.vkcs_region
+  auth_url   = var.vkcs_auth_url
+}
 
 data "vkcs_networking_network" "extnet" {
   name = var.external_network_name
